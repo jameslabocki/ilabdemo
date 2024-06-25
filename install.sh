@@ -2,6 +2,27 @@
 # This script can be run on an InstructLab instance from demo.redhat.com to fix the issues with training and
 # also deploy the parasol insurance claims application
 
+# After this script is run you should be able to do the following to run the parasol insurance app
+# You can now change directories with cd ~/parasol-insurance/app
+# Then you can source ~/.bashrc
+# Then you can quarkus dev to launch the parasol-insurance app
+# Then you can navigate to the app on port 8005 (use http, not https)
+
+# Also after this script is run you should be able to do the following with instructlab to retrain the model on the delorean
+# cd ~/instructlab
+# source venv/bin/activate
+# ilab init
+# ilab download
+# mkdir -p ~/instructlab/taxonomy/knowledge/parasol/overview
+# cp files/qna.yaml ~/instructlab/taxonomy/knowledge/parasol/overview/qna.yaml
+# ilab diff
+# ilab generate --num-instructions 200
+# ilab train --iters 300 --device cuda
+# ilab serve --model-path ./models/ggml-model-f16.gguf
+# ilab chat
+# You may want to ask "how much does it cost to repair a flux capacitor in a delorean?"
+# Now you can go back to the Parasol app and test to see if your newly served model is spitting out better answers
+
 #Navigate to home directory
 cd ~
 
@@ -39,19 +60,6 @@ pip install 'numpy<2.0'
 mkdir ~/files
 curl -o ~/files/qna.yaml https://raw.githubusercontent.com/gshipley/backToTheFuture/main/qna.yaml
 
-#Now you should be able to do the following with instructlab to retrain a model 
-# mkdir -p ~/instructlab/taxonomy/knowledge/parasol/overview
-# cp files/qna.yaml ~/instructlab/taxonomy/knowledge/parasol/overview/qna.yaml
-# cd ~/instructlab
-# ilab init
-# ilab download
-# ilab diff
-# ilab generate --num-instructions 200
-# ilab train --iters 300 --device cuda
-# ilab serve --model-path ./models/ggml-model-f16.gguf
-# ilab chat
-# You may want to ask "how much does it cost to repair a flux capacitor in a delorean?"
-
 #Now lets install the parasol insurance app 
 
 # ensure we are in home directory
@@ -76,12 +84,5 @@ echo "cloning parasol-insurance"
 sleep 1
 git clone https://github.com/jamesfalkner/parasol-insurance.git
 
-sleep 2
-echo "complete"
-echo ""
-echo ""
-echo "You can now change directories to ~/parasol-insurance/app"
-echo "Then you can source ~/.bashrc"
-echo "Then you can quarkus dev to launch the parasol-insurance app"
-echo "Then you can hit the app on port 8005 (use http, not https)"
+
 
