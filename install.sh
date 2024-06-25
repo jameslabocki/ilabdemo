@@ -40,6 +40,8 @@ curl -o ~/files/qna.yaml https://raw.githubusercontent.com/gshipley/backToTheFut
 # mkdir -p ~/instructlab/taxonomy/knowledge/parasol/overview
 # cp files/qna.yaml ~/instructlab/taxonomy/knowledge/parasol/overview/qna.yaml
 # cd ~/instructlab
+# ilab init
+# ilab download
 # ilab diff
 # ilab generate --num-instructions 200
 # ilab train --iters 300 --device cuda
