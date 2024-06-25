@@ -2,14 +2,16 @@
 # This script can be run on an InstructLab instance from demo.redhat.com to fix the issues with training and
 # also deploy the parasol insurance claims application
 
-#Navigate to instructlab directory
-cd ~/instructlab
+#Navigate to home directory
+cd ~
 
 #remove pip cache and venv and start over. Not sure why, but if
 #we don't do this we hit weird errors involving knowledge.json 
 #not existing in the schema when running ilab diff
-rm -rf ~/instructlab/venv
+rm -rf ~/instructlab
 rm -rf ~/.cache/pip
+mkdir ~/instructlab
+cd ~/instructlab
 python -m venv venv
 
 #source venv
