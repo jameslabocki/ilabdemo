@@ -32,6 +32,9 @@ pip install .
 #This runs a LONG time for some reason
 pip install --force-reinstall "llama_cpp_python[server]==0.2.79" --config-settings  cmake.args="-DLLAMA_CUDA=on"
 
+#downgrade numpy or you'll get a breaking change to ilab training
+pip install 'numpy<2.0'
+
 # Getting instructlab qna.yaml for backtothefuture example
 mkdir ~/files
 curl -o ~/files/qna.yaml https://raw.githubusercontent.com/gshipley/backToTheFuture/main/qna.yaml
