@@ -75,14 +75,18 @@ echo "installing sdkman"
 sleep 1
 curl -s "https://get.sdkman.io" | bash
 source "/home/instruct/.sdkman/bin/sdkman-init.sh"
-sdk install quarkus
-sdk install java 22.0.1-tem
-sdk install maven
+sdk install java 21.0.3-tem
 
 # Clone parasol app
 echo "cloning parasol-insurance"
 sleep 1
-git clone https://github.com/jamesfalkner/parasol-insurance.git
+# git clone https://github.com/jamesfalkner/parasol-insurance.git
+git clone https://github.com/rh-rad-ai-roadshow/parasol-insurance.git
 
+# Build parasol app
+cd parasol-insurance/app
+./mvnw clean package -DskipTests
 
+# Run parasol app
+java -jar target/quarkus-app/quarkus-run.jar
 
