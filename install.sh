@@ -2,11 +2,8 @@
 # This script can be run on an InstructLab instance from demo.redhat.com to fix the issues with training and
 # also deploy the parasol insurance claims application
 
-# After this script is run you should be able to do the following to run the parasol insurance app
-# You can now change directories with cd ~/parasol-insurance/app
-# Then you can source ~/.bashrc
-# Then you can quarkus dev to launch the parasol-insurance app
-# Then you can navigate to the app on port 8005 (use http, not https)
+# After this script is run, the parasol app will be running on port 8005
+# You can navigate to the app on port 8005 (use http, not https)
 
 # Also after this script is run you should be able to do the following with instructlab to retrain the model on the delorean
 # cd ~/instructlab
