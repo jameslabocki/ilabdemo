@@ -2,11 +2,8 @@
 # This script can be run on an InstructLab instance from demo.redhat.com to fix the issues with training and
 # also deploy the parasol insurance claims application
 
-# After this script is run you should be able to do the following to run the parasol insurance app
-# You can now change directories with cd ~/parasol-insurance/app
-# Then you can source ~/.bashrc
-# Then you can quarkus dev to launch the parasol-insurance app
-# Then you can navigate to the app on port 8005 (use http, not https)
+# After this script is run, the parasol app will be running on port 8005
+# You can navigate to the app on port 8005 (use http, not https)
 
 # Also after this script is run you should be able to do the following with instructlab to retrain the model on the delorean
 # cd ~/instructlab
@@ -75,14 +72,18 @@ echo "installing sdkman"
 sleep 1
 curl -s "https://get.sdkman.io" | bash
 source "/home/instruct/.sdkman/bin/sdkman-init.sh"
-sdk install quarkus
-sdk install java 22.0.1-tem
-sdk install maven
+sdk install java 21.0.3-tem
 
 # Clone parasol app
 echo "cloning parasol-insurance"
 sleep 1
-git clone https://github.com/jamesfalkner/parasol-insurance.git
+# git clone https://github.com/jamesfalkner/parasol-insurance.git
+git clone https://github.com/rh-rad-ai-roadshow/parasol-insurance.git
 
+# Build parasol app
+cd parasol-insurance/app
+./mvnw clean package -DskipTests
 
+# Run parasol app
+java -jar target/quarkus-app/quarkus-run.jar
 
