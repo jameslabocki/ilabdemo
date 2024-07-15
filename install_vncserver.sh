@@ -4,8 +4,6 @@ sudo dnf install tigervnc tigervnc-server -y
 
 sudo dnf group install GNOME base-x -y
 
-sudo dnf groupinstall "Server with GUI" -y
-
 sudo systemctl set-default graphical.target
 
 sudo systemctl isolate graphical.target
